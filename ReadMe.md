@@ -3,21 +3,18 @@
 *-- re-organized in 15/01/12 --*  
   
 ##Goal  
-Multilabel attribute prediction for attribute-based garment analysis.  
-Conducted on the 30w taobao dataset.
-Due to storage limits, all caffemodel files and train txts are not included in this git warehouse.
-Please contact me directly if you need trained caffemodels.
+Garment analysis: clothes matching.
+To match a garment from a source domain to a target domain. Include an example of the looklive dataset.
   
 ##Process  
 1.  Generate attribute list and image-SKU-attribute maps  
         read_attributes.m  
         generate_image_to_sku.m  
-2.  Train GoogleNet for each attribute  
+2.  Train GoogleNet in 80w dataset (Yichao Xiong), let's name it model "xiong" 
+3.  Train GoogleNet for each attribute  
         write_attribute_files_no_ssd_sku_split.m  
      then go to directory "attributes_gt_sku_no_ssd/{1..22}" and run the training scripts  
-3.  Train GoogleNet for multi-label attribute analysis
-        write_attribute_files_multi_label_sku_split_no_ssd.m
-     then go to directory "attributes_gt_sku_no_ssd/all" or "(--)/all_fc" and run the training scripts
+4.  Do the matching stuffs
   
   
 ##file description  
@@ -50,3 +47,10 @@ Please contact me directly if you need trained caffemodels.
     view_features.py         : use caffe to extract features, save to txt file  
 
     write_attribute_files_no_ssd_sku_split:   Filter attribute values (Discard values with few examples and add it to a category named "other") and write training/testing files for training attribute-CNNs  
+
+## Special scripts for this branch
+     add_padding_to_looklive  : add padding to images in the looklive dataset  
+     
+     show_predict_features_nn_looklive.m: nearest neighbor using only one attribute (or "xiong")  
+     
+     show_predict_features_nn_looklive_combine_attributes.m: filter the images by multiple attributes, then compute nearest neigbor using "xiong"

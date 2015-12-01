@@ -1,9 +1,12 @@
 attributes_gt
 attributes_gt_no_ssd
 attributes_gt_sku
-attributes_gt_sku_no_ssd/no_gt
-attributes_gt_sku_no_ssd/all_query
+attributes_gt_sku_no_ssd/no_ft
+attributes_gt_sku_no_ssd/all
 attributes_gt_sku_no_ssd/all_2
+attributes_gt_sku_no_ssd/all_fc
+!attributes_gt_sku_no_ssd/all_query/train.txt
+!attributes_gt_sku_no_ssd/all_query/test.txt
 **.caffemodel
 **.solverstate
 **/train.txt
