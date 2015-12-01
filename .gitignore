@@ -1,0 +1,11 @@
+attributes_gt
+attributes_gt_no_ssd
+attributes_gt_sku
+attributes_gt_sku_no_ssd
+attributes_gt_sku_no_ssd/*.caffemodel
+attributes_gt_sku_no_ssd/*.solverstate
+backup
+drama-taobao-match
+liblinear-2.1
+small_looklive_test_seq_3
+*~
