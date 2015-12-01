@@ -8,12 +8,17 @@ garment dataset.
   
 ##Process  
 1.  Generate attribute list and image-SKU-attribute maps  
-        read_attributes.m  
-        generate_image_to_sku.m  
+         read_attributes.m  
+         generate_image_to_sku.m  
 2.  Train GoogleNet for each attribute  
-        write_attribute_files_no_ssd_sku_split.m  
+         write_attribute_files_no_ssd_sku_split.m  
      then go to directory "attributes_gt_sku_no_ssd/{1..22}" and run the training scripts  
 3.  Prepare detailed data for mental image algorithm  
+    *To do list:*
+    Split the 30w dataset according to roughly 4 categories and 5 or 6?? colors.  
+    Given a category and a color, find related SKUs and find a representive image for each SKU  
+    Prepare the similarity matrix for each of the category-color-indepent scenarios.  
+    Run the mental image retrieval process on this dataset.  
   
   
 ##file description  
