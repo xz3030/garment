@@ -11,11 +11,11 @@ if you have made some modifications.
 
 Branches:  
 
-* ###mental
+* ###mental###  
      for mental image retrieval, especially including the image to SKU relationship
-* ###attribute
+* ###attribute###  
      multi-label attribute prediction
-* ###maching
+* ###maching###  
      clothes matching
 
   
