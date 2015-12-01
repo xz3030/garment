@@ -1,0 +1,15 @@
+net: "/DB/rhome/ycxiong/caffe-master/my_models/bvlc_googlenet/cigit_gt_18/train.prototxt"
+test_iter: 1000
+test_interval: 1000
+test_initialization: false
+display: 40
+base_lr: 0.001
+lr_policy: "step"
+stepsize: 160000
+gamma: 0.96
+max_iter: 10000000
+momentum: 0.9
+weight_decay: 0.0002
+snapshot: 5000
+snapshot_prefix: "/DB/rhome/ycxiong/caffe-master/my_models/bvlc_googlenet/cigit_gt_18/chongqing"
+solver_mode: GPU

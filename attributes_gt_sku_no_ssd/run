@@ -1,0 +1,14 @@
+GLOG_logtostderr=1 /DB/tools/caffe_new/caffe/build/tools/caffe train -solver ./solver.prototxt -weights ../chongqing_iter_445000.caffemodel --gpu 1 2>&1 | tee log.txt
+
+
+
+
+
+
+GLOG_logtostderr=1 /DB/tools/caffe_new/caffe/build/tools/caffe train -solver ./solver.prototxt -weights ../chongqing_iter_445000.caffemodel --gpu 1 2>&1 | tee log.txt
+
+
+GLOG_logtostderr=1 /DB/tools/caffe_new/caffe/build/tools/caffe train -solver ./solver_pad.prototxt -weights ../chongqing_iter_445000.caffemodel --gpu 1 2>&1 | tee log_pad.txt
+
+
+GLOG_logtostderr=1 /DB/tools/caffe_new/caffe/build/tools/caffe train -solver ./solver_pad_cont.prototxt -snapshot ./train_pad_iter_5000.solverstate --gpu 1 2>&1 | tee log_pad_cont.txt

@@ -1,0 +1,5 @@
+use ../generate_multilabel_lmdb.py to generate lmdb using saved random seed
+
+all: multiple attributes (6)
+all_2: multiple attributes (5), all of them within 60-80 acc, low lr
+all_fc: multiple attributes (5), for each attribute, init an individual fc layer
