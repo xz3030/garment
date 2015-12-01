@@ -4,34 +4,40 @@
 
 %% read attributes
 % locations
-attrDir = '/DATA/data/ycxiong/cigit_taobao_data/30w/ansi';
-N = 243637;
 
-clothing_attributes = cell(1,22);
+if ~exist('clothing_attributes.mat', 'file')
+    attrDir = '/DATA/data/ycxiong/cigit_taobao_data/30w/ansi';
+    N = 243637;
 
-for attrID = 1:22
-    attrFile = sprintf('%s/%d.txt', attrDir, attrID);
-    %attrs = textread(attrFile, '%s\n');
+    clothing_attributes = cell(1,22);
 
-    fd = fopen(attrFile, 'r', 'n', 'GBK');
-    attrs = cell(1, N);
-    ind = 1;
-    while ~feof(fd)
-        l = fgetl(fd);
-        attrs{ind} = l;
-        ind = ind+1;
+    for attrID = 1:22
+        attrFile = sprintf('%s/%d.txt', attrDir, attrID);
+        %attrs = textread(attrFile, '%s\n');
+
+        fd = fopen(attrFile, 'r', 'n', 'GBK');
+        attrs = cell(1, N);
+        ind = 1;
+        while ~feof(fd)
+            l = fgetl(fd);
+            attrs{ind} = l;
+            ind = ind+1;
+        end
+        fclose(fd);
+
+        [attrNames, m, n] = unique(attrs, 'stable');
+        attr = struct;
+        attr.names = attrNames;
+        attr.label = n;
+
+        clothing_attributes{attrID} = attr;
     end
-    fclose(fd);
-    
-    [attrNames, m, n] = unique(attrs, 'stable');
-    attr = struct;
-    attr.names = attrNames;
-    attr.label = n;
-    
-    clothing_attributes{attrID} = attr;
-end
 
-save('clothing_attributes.mat', 'clothing_attributes', '-v7.3');
+    save('clothing_attributes.mat', 'clothing_attributes', '-v7.3');
+else
+    disp('Clothing attribute file already exists!!');
+    load('clothing_attributes.mat');
+end
 
 
 %% analyze attributes

@@ -10,8 +10,8 @@ imglist = textread(imlistFile,'%s');
 
 srcImDir = '/DATA/data/ycxiong/cigit_taobao_data/30w/attribute_cut/';
 tgtImDir = '/win_D/cigit_taobao_data/30w/attribute_cut/';
-tgt_pad_ImDir = '/win_D/cigit_taobao_data/30w/attribute_cut_plus_padding/';
-%tgt_pad_ImDir = '/DATA/data/zxu/cigit_taobao_data/30w/attribute_cut_plus_padding/';
+%tgt_pad_ImDir = '/win_D/cigit_taobao_data/30w/attribute_cut_plus_padding/';
+tgt_pad_ImDir = '/DATA/data/zxu/cigit_taobao_data/30w/attribute_cut_plus_padding/';
 
 mkdir_if_missing(tgtImDir);
 mkdir_if_missing(tgt_pad_ImDir);
