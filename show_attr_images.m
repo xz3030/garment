@@ -1,6 +1,6 @@
 function show_attr_images(imlist)
 % test case1:  gao ling
-%  dd = 'imglist.txt';
+%  dd = 'backup/imglist.txt';
 %  imlist = textread(dd,'%s');
 %  load('clothing_attributes.mat');
 %  ll = imlist(clothing_attributes{3}.label==3);

@@ -1,6 +1,8 @@
 % write attribute files, in /DATA/, split by sku level
 % come after read_attributes.m
 %{=
+
+config;
 %% attribute related dirs and paths and parameters
 mainDir = 'attributes_gt_sku_no_ssd';    % main dir
 ratioTest = 0.2;              % ratio of train/test split
@@ -10,14 +12,10 @@ ratioDiscard = 1/200;         % ratio of discarding an attribute after removing 
 %% train test split
 nim = length(clothing_attributes{1}.label);
 
-load('cache/train_test_split_sku.mat');
+load(ttsplitFile);
 
 %% imglist
-%imDir = '/win_D/cigit_taobao_data/30w/attribute_cut/';
-imDir = '/DATA/data/ycxiong/cigit_taobao_data/30w/attribute_cut/';
-%imPadDir = '/win_D/cigit_taobao_data/30w/attribute_cut_plus_padding/';
-imPadDir = '/DATA/data/zxu/cigit_taobao_data/30w/attribute_cut_plus_padding/';
-imglist = textread('/DATA/data/ycxiong/cigit_taobao_data/30w/ansi/imglist.txt','%s');
+imglist = textread(imglistFile,'%s');
 imgPadlist = arrayfun(@(i)[imPadDir imglist{i}(30:end)], 1:nim, 'UniformOutput', false);
 imglist = arrayfun(@(i)[imDir imglist{i}(30:end)], 1:nim, 'UniformOutput', false);
 
@@ -127,3 +125,5 @@ for i=1:length(clothing_attributes)
     % cahist = histc(ca.label, 1:nvalue);
     
 end
+
+save(clothing_attributes_after_parsing_file, 'clothing_attributes_after_parsing');

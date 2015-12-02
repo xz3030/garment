@@ -1,9 +1,13 @@
 %function generate_image_to_sku
 % for 30w dataset, generate the respective image to SKU results.
 
+config;
+
 %% im2sku
-if ~exist('cache/30w_im2sku.mat','file')
-    imglist = textread('/DATA/data/ycxiong/cigit_taobao_data/30w/ansi/imglist.txt','%s');
+if exist(im_sku_map_file,'file') && canSkip
+    load(im_sku_map_file);
+else
+    imglist = textread(imglistFile,'%s');
     Nim = length(imglist);
 
     skulist1 = cell(1, Nim);
@@ -15,14 +19,18 @@ if ~exist('cache/30w_im2sku.mat','file')
 
     [skulist, m, n] = unique(skulist1);
     im2sku = n;
+    sku2im = cell(size(skulist));
+    for j=1:length(sku2im)
+        sku2im{j} = find(n==j);
+    end
 
-    save('cache/30w_im2sku.mat', 'imglist', 'skulist', 'im2sku');
-else
-    load('cache/30w_im2sku.mat');
+    save(im_sku_map_file, 'imglist', 'skulist', 'im2sku', 'sku2im');
 end
 
 %% random seed
-if ~exist('cache/train_test_split_sku.mat', 'file');
+if exist(ttsplitFile, 'file') && canSkip
+    disp('Train test split already exists!');
+else
     ratioTest = 0.2;              % ratio of train/test split
 
     Nsku = length(skulist);
@@ -33,7 +41,7 @@ if ~exist('cache/train_test_split_sku.mat', 'file');
     for i=1:ntest
         train_test_split(im2sku==P(i)) = 0;
     end
-    save('cache/train_test_split_sku.mat', 'train_test_split');
+    save(ttsplitFile, 'train_test_split');
 end
 
 

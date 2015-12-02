@@ -12,7 +12,10 @@ if nargin<2
     phase = 'train';
 end
 
-attDir = '/DB/rhome/zxu/workspace/cloth/attributes_gt_sku_no_ssd';
+config;
+
+%attDir = '/DB/rhome/zxu/workspace/cloth/attributes_gt_sku_no_ssd';
+attDir = mainDir;
 tmp = dir(attDir);
 tmp = tmp(3:end);
 

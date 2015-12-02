@@ -4,9 +4,11 @@
 
 %% read attributes
 % locations
-
-if ~exist('clothing_attributes.mat', 'file')
-    attrDir = '/DATA/data/ycxiong/cigit_taobao_data/30w/ansi';
+config;
+if exist(clothing_attributes_file, 'file') && canSkip
+    disp('Clothing attribute file already exists!!');
+    load(clothing_attributes_file);
+else
     N = 243637;
 
     clothing_attributes = cell(1,22);
@@ -33,10 +35,7 @@ if ~exist('clothing_attributes.mat', 'file')
         clothing_attributes{attrID} = attr;
     end
 
-    save('clothing_attributes.mat', 'clothing_attributes', '-v7.3');
-else
-    disp('Clothing attribute file already exists!!');
-    load('clothing_attributes.mat');
+    save(clothing_attributes_file, 'clothing_attributes', '-v7.3');
 end
 
 

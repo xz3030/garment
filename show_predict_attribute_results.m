@@ -17,10 +17,11 @@ if nargin<3
     debug_mode = false;
 end
 
-warning off;
+config;
 
 
-attDir = '/DB/rhome/zxu/workspace/cloth/attributes_gt_sku_no_ssd';
+%attDir = '/DB/rhome/zxu/workspace/cloth/attributes_gt_sku_no_ssd';
+attDir = mainDir;
 tmp = dir(attDir);
 tmp = tmp(3:end);
 

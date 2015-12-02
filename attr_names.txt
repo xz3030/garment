@@ -1,7 +1,7 @@
 00.category
 01.style
 02.collar_shape
-03.sleeve_length
+03.sleeve_shape
 04.material
 05.pattern
 06.button_shape

@@ -42,7 +42,7 @@ function [im, pad_im] = crop_pad_image(imname)
     im = imread(imname);
     [pad_im, l_pad, r_pad] = crop_and_resize_for_30w(im);
     
-    image_mean = [119.6200, 120.8229, 104.2657];
+    image_mean = [104, 117, 123];
     image_mean = image_mean([3 2 1]);
     
     if l_pad > 0
