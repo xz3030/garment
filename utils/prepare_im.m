@@ -17,7 +17,7 @@ for i=1:nbatch
         batch(:,:,:,j) = im_data;
     end
     batches{i} = batch;
-    fprintf('Prepare batch %d/%d in %.4f seconds\n', i, nbatch, toc);
+    %fprintf('Prepare batch %d/%d in %.4f seconds\n', i, nbatch, toc);
 end
 
 end

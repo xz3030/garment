@@ -46,10 +46,10 @@ if iswrite
     ncateg = size(valid_skus,1);
     ncolor = size(valid_skus,2);
     
-    for i=1:ncateg
+    for i=2:ncateg
         % for each category, find several attributes for computing
         % similarity
-        valid_attrs = attr_cat_map(i);
+        valid_attrs = attr_cat_map(i,:);
         
         for j=1:ncolor
             % save query txt containing image names
@@ -76,7 +76,7 @@ if iswrite
             query_features = cell(1,length(valid_attrs));
             for att = 1:length(valid_attrs)
                 tmpattr = valid_attrs(att);
-                fprintf('Compute similarity using attribute %s\n', tmpattr);
+                fprintf('Compute similarity using attribute %d\n', tmpattr);
                 
                 % define dirs
                 net_weights = sprintf('%s/%d/train_pad_iter_30000.caffemodel', ...
@@ -84,7 +84,7 @@ if iswrite
                 if ~exist(net_weights, 'file')
                     net_weights = sprintf('%s/%d/train_pad_iter_10000.caffemodel', ...
                         mainDir, tmpattr);
-                    assert(exist(net_weights, 'file'));
+                    %assert(exist(net_weights, 'file'));
                 end
 
                 net_model = fullfile(mentalQueryDir, 'query_deploy.prototxt');
@@ -112,26 +112,31 @@ if iswrite
                 caffe.reset_all();
 
                 % compute similarity
-                D = pdist(features, 'cosine');
+                D = pdist(features, distance_function);
                 D = squareform(D);
 
 
                 %% show if valid
                 if isshow
                     while 1
-                    P = ceil(rand()*nim);
-                    [~,ord] = sort(D1(P,:));
-                    bigI(imfilenames(ord), 5, 5, 100, 100);
-                    keyboard;
+                        P = ceil(rand()*nim);
+                        [~,ord] = sort(D1(P,:));
+                        bigI(imfilenames(ord), 5, 5, 100, 100);
+                        keyboard;
                     end
                 end
                 
                 % output structure
                 qf = struct;
                 qf.attrid = tmpattr;
+                qf.categoryid = i;
+                qf.colorid = j;
+                qf.features = features;
+                qf.similarity = ones(size(D))-D;
+                query_features{att} = qf;
             end
             
-            save(fullfile(outDir, 'CNNfeatures.mat'), 'features', 'D');
+            save(fullfile(outDir, 'CNNfeatures.mat'), 'query_features');
         end
     end
     

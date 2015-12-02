@@ -7,7 +7,7 @@ function get_entry_query_image_pool(clothing_attributes, sku2im)
 config;
 % load('cache/clothing_attributes.mat');
 % load('cache/30w_im2sku.mat');
-
+canSkip = 0;
 if exist(query_filter_file, 'file') && canSkip
     load(query_filter_file);
 else
