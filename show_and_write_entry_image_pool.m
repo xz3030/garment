@@ -46,7 +46,7 @@ if iswrite
     ncateg = size(valid_skus,1);
     ncolor = size(valid_skus,2);
     
-    for i=2:ncateg
+    for i=1:ncateg
         % for each category, find several attributes for computing
         % similarity
         valid_attrs = attr_cat_map(i,:);
@@ -70,7 +70,7 @@ if iswrite
             
             %% get feature
             % prepare image batch
-            [batches, nbatch] = prepare_im(imfilenames);
+            [batches, nbatch] = prepare_im(imfilenames, batch_size);
             
             %% compute CNN features
             query_features = cell(1,length(valid_attrs));

@@ -1,5 +1,5 @@
-function [batches, nbatch] = prepare_im(imf)
-config;
+function [batches, nbatch] = prepare_im(imf, batch_size)
+
 nim = length(imf);
 nbatch = ceil(nim/batch_size);
 for i=nim+1:nbatch*batch_size

@@ -45,6 +45,7 @@ end
 % ncat(4) x ncolor(9)
 % each: a struct contains sku ids, respective imids, and the randomly 
 % selected imid
+
 if exist(query_sku_ims_map_file, 'file') && canSkip
     disp('Result file already exists!');
 else
